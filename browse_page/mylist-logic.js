@@ -1,5 +1,22 @@
 
-let myWatchlist = JSON.parse(localStorage.getItem('myWatchlist')) || [];
+let myWatchlist = [];
+
+async function fetchWatchlist() {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+
+    try {
+        const response = await fetch('http://localhost:8000/watchlist', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (response.ok) {
+            myWatchlist = await response.json();
+            renderMyList();
+        }
+    } catch (error) {
+        console.error('Error fetching watchlist:', error);
+    }
+}
 
 function renderMyList() {
     const grid = document.getElementById('movies-grid');
@@ -28,12 +45,12 @@ function renderMyList() {
                     <div class="movie-title-new">${movie.title}</div>
 
                     <a href="#" class="btn-details-new"
-                       onclick="viewDetails('${movie.title.replace(/'/g, "\\'")}')">
+                       onclick="viewDetails(${movie.id})">
                        Details
                     </a>
 
                     <button class="btn-remove-new"
-                       onclick="removeItem('${movie.title.replace(/'/g, "\\'")}')">
+                       onclick="removeItem(${movie.id})">
                         <i class="bi bi-trash"></i> Remove
                     </button>
                 </div>
@@ -43,10 +60,19 @@ function renderMyList() {
 }
 
 
-function removeItem(title) {
-    myWatchlist = myWatchlist.filter(m => m.title !== title);
-    localStorage.setItem('myWatchlist', JSON.stringify(myWatchlist));
-    renderMyList();
+async function removeItem(id) {
+    const token = localStorage.getItem('token');
+    try {
+        const response = await fetch(`http://localhost:8000/watchlist/${id}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (response.ok) {
+            fetchWatchlist();
+        }
+    } catch (error) {
+        console.error('Error removing from watchlist:', error);
+    }
 }
 
 // ============================================
@@ -83,19 +109,21 @@ function updateAuthStatus() {
 
 function logout() {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
     updateAuthStatus();
     alert('Logged out successfully');
+    window.location.href = 'index.html';
 }
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
-    renderMyList();
+    fetchWatchlist();
     updateAuthStatus();
 });
 
 
-function viewDetails(title) {
-    const movie = myWatchlist.find(m => m.title === title);
+function viewDetails(id) {
+    const movie = myWatchlist.find(m => m.id === id);
     localStorage.setItem('selectedMovie', JSON.stringify(movie));
     window.location.href = 'details.html';
 }
