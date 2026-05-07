@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax - Admin Panel</title>
+    <link rel="stylesheet" href="admin.css"> 
+</head>
+<body class="admin-body">
+    <main class="admin-container">
+        <section class="admin-card">
+            <header class="admin-header">
+                <h2>Add New Movie</h2>
+                <p>Product Management System</p>
+            </header>
+            
+            <form id="addMovieForm" class="admin-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="movieTitle">Movie Title</label>
+                        <input type="text" id="movieTitle" placeholder="Enter title..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieCategory">Category</label>
+                        <select id="movieCategory">
+                            <option value="Action">Action</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Sci-Fi">Sci-Fi</option>
+                            <option value="Horror">Horror</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="movieYear">Year</label>
+                        <input type="number" id="movieYear" placeholder="2026" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieRating">Rating</label>
+                        <input type="number" id="movieRating" step="0.1" placeholder="4.5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieDuration">Duration</label>
+                        <input type="text" id="movieDuration" placeholder="2h 15m" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="movieDirector">Director</label>
+                        <input type="text" id="movieDirector" placeholder="Director Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieLanguage">Language</label>
+                        <input type="text" id="movieLanguage" placeholder="English" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="movieCast">Cast</label>
+                    <input type="text" id="movieCast" placeholder="Actors (comma separated)" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="movieImg">Poster URL</label>
+                    <input type="url" id="movieImg" placeholder="https://..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="movieDesc">Description</label>
+                    <textarea id="movieDesc" rows="3" placeholder="Brief story..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Add to Platform</button>
+            </form>
+
+            <div class="mt-5">
+                <h3 style="color: #e50914; text-align: center; margin: 30px 0 15px;">Existing Movies</h3>
+                <div id="adminMoviesList" class="list-group">
+                    </div>
+            </div>
+        
+            <footer class="admin-footer">
+                <a href="index.html">← Back to Browse</a>
+            </footer>
+        </section>
+    </main>
+    <script src="admin.logic.js"></script>
+</body>
+</html>

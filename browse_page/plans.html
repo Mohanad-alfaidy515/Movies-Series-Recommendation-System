@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Plan - CINEMAX</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-plans.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar-custom">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between w-100">
+                <a href="index.html" class="brand-logo text-decoration-none">CINEMAX</a>
+                <div class="d-flex align-items-center gap-4">
+                    <a href="mylist.html" class="nav-link-item text-decoration-none">
+                        <i class="bi bi-plus-square"></i>
+                        <span>My List</span>
+                    </a>
+                    <a href="login.html" class="nav-link-item text-decoration-none">
+                        <i class="bi bi-person-circle"></i>
+                        <span>Login</span>
+                    </a>
+                    <a href="signup.html" class="nav-link-item text-decoration-none">
+                        <i class="bi bi-person-plus"></i>
+                        <span>Sign Up</span>
+                    </a>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle d-md-none" id="mobileMenuToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-menu-content">
+                    <a href="mylist.html" class="mobile-menu-item">
+                        <i class="bi bi-plus-square"></i>
+                        <span>My List</span>
+                    </a>
+                    <a href="login.html" class="mobile-menu-item">
+                        <i class="bi bi-person-circle"></i>
+                        <span>Login</span>
+                    </a>
+                    <a href="signup.html" class="mobile-menu-item">
+                        <i class="bi bi-person-plus"></i>
+                        <span>Sign Up</span>
+                    </a>
+                    <a href="admin.html" class="mobile-menu-item">
+                        <i class="bi bi-gear"></i>
+                        <span>Admin Panel</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+    <div class="plans-container">
+
+        <main class="plans-content">
+            <span class="step-indicator">STEP 2 OF 3</span>
+            <h1>Choose the plan that's right for you</h1>
+            <ul class="benefit-list">
+                <li><i class="bi bi-check2"></i> Watch all you want. Ad-free.</li>
+                <li><i class="bi bi-check2"></i> Recommendations just for you.</li>
+                <li><i class="bi bi-check2"></i> Change or cancel your plan anytime.</li>
+            </ul>
+
+            <div class="plans-table-wrapper">
+                <table class="plans-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="plan-header" onclick="selectPlan(1)">Basic</th>
+                            <th class="plan-header" onclick="selectPlan(2)">Standard</th>
+                            <th class="plan-header active" onclick="selectPlan(3)">Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monthly price</td>
+                            <td>EGP 70</td>
+                            <td>EGP 120</td>
+                            <td>EGP 165</td>
+                        </tr>
+                        <tr>
+                            <td>Video quality</td>
+                            <td>Good</td>
+                            <td>Better</td>
+                            <td>Best</td>
+                        </tr>
+                        <tr>
+                            <td>Resolution</td>
+                            <td>720p</td>
+                            <td>1080p</td>
+                            <td>4K+HDR</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button class="btn-continue" onclick="window.location.href='checkout.html'">Next</button>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-fluid px-4">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-logo">CINEMAX</h3>
+                    <p class="footer-description">Your ultimate destination for premium entertainment. Stream unlimited movies, TV shows, and exclusive content.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="mylist.html">My List</a></li>
+                        <li><a href="plans.html">Plans & Pricing</a></li>
+                        <li><a href="admin.html">Admin Panel</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Plans</h4>
+                    <ul class="footer-links">
+                        <li><a href="#basic">Basic Plan</a></li>
+                        <li><a href="#standard">Standard Plan</a></li>
+                        <li><a href="#premium">Premium Plan</a></li>
+                        <li><a href="#">Compare Plans</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2026 CINEMAX. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy</a>
+                        <a href="#">Terms</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function selectPlan(index) {
+            const headers = document.querySelectorAll('.plan-header');
+            headers.forEach(h => h.classList.remove('active'));
+            headers[index-1].classList.add('active');
+        }
+
+        // Mobile menu functionality for plans page
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (mobileMenuToggle && mobileMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                    this.querySelector('i').classList.toggle('bi-list');
+                    this.querySelector('i').classList.toggle('bi-x');
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                        mobileMenu.classList.remove('active');
+                        mobileMenuToggle.querySelector('i').classList.remove('bi-x');
+                        mobileMenuToggle.querySelector('i').classList.add('bi-list');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
