@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const posterPath = selectedMovie.poster || selectedMovie.img;
         const bgElement = document.getElementById('bg');
         if (posterPath) {
-            bgElement.style.backgroundImage = url('${posterPath}');
+            bgElement.style.backgroundImage = `url('${posterPath}')`;
         }
 
         

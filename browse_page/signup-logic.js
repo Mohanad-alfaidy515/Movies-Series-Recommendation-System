@@ -29,35 +29,31 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Check if user already exists
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const existingUser = users.find(user => user.email === email);
-
-        if (existingUser) {
-            alert('An account with this email already exists');
-            return;
-        }
-
-        // Create new user
-        const newUser = {
-            id: Date.now(),
-            name: name,
-            email: email,
-            password: password, // In a real app, this should be hashed
-            createdAt: new Date().toISOString()
-        };
-
-        users.push(newUser);
-        localStorage.setItem('users', JSON.stringify(users));
-
-        // Set current user as logged in
-        localStorage.setItem('currentUser', JSON.stringify({
-            id: newUser.id,
-            name: newUser.name,
-            email: newUser.email
-        }));
-
-        alert('Account created successfully! Welcome to CINEMAX.');
-        window.location.href = 'index.html';
+        // Call Backend API
+        fetch('http://localhost:8000/auth/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password
+            }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => { throw new Error(err.detail || 'Signup failed') });
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert('Account created successfully! Please login.');
+            window.location.href = 'login.html';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert(error.message);
+        });
     });
 });
